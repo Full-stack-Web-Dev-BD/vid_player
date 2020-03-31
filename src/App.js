@@ -46,9 +46,6 @@ export default function RangeSlider() {
     window.localStorage.setItem('update','commit')
 
   })
-  const show=(event)=>{
-    console.log(localStorage.getItem('video_duration'))
-  }
   const changeHandler=(event)=>{
     var videoID=getYouTubeID(event.target.value)
     window.localStorage.setItem('getVideoID',`${videoID}`)
@@ -86,7 +83,6 @@ export default function RangeSlider() {
                           getAriaValueText={valuetext}
                         />
                       </div>
-                      <button onClick={show} className="btn">show</button>
                   </div>
                 </div>
               </div>
