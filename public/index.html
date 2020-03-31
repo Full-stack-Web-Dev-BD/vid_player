@@ -66,7 +66,7 @@
         player = new YT.Player('ytplayer', {
         height: '360',
         width: '640',
-        videoId: 'M7lc1UVf-VE',
+        videoId: localStorage.getItem('getVideoID'),
         seekTo:0,
         autoplay: 1,
         loop: 1,
@@ -120,10 +120,11 @@
       
       var valueOne=localStorage.getItem('valueOne')
       var valueTwo=localStorage.getItem('valueTwo')
-
+      var getVideoID=localStorage.getItem('getVideoID')
       var valueOne=localStorage.getItem('valueOne')
       var currentTime =player.getCurrentTime()
 
+      console.log(player.videoId)
       if(localStorage.getItem('update')=='commit'){
         console.log('a new time renge pushed',valueOne, valueTwo)
         player.seekTo(valueOne)
@@ -132,6 +133,10 @@
       if(currentTime>valueTwo){
         player.seekTo(valueOne)
       }
+      // console.log('player video id' ,player.videoId , 'get video id ' , getVideoID)
+      // if(player.videoId!==getVideoID){
+      //   player.videoId=getVideoID
+      // }
     }, 10);
     </script>
   </body>

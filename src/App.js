@@ -20,7 +20,6 @@ export default function RangeSlider() {
   const classes = useStyles();
   const [value, setValue] = React.useState([0, 100]);
   const [link, setlink] = useState('https://www.youtube.com/embed/MqNd1xD46VY')
-  const [videoID, setVideoID] = useState('')
 
   const handleChange = (event, newValue) => {
     var video_duration = localStorage.getItem('video_duration')
@@ -35,6 +34,7 @@ export default function RangeSlider() {
     window.localStorage.setItem('valueOne',valueOne)
     window.localStorage.setItem('valueTwo',valueTwo)
     window.localStorage.setItem('update','commit')
+    
     console.log(valueOne, valueTwo)
     console.log(localStorage.getItem('update'))
     
@@ -44,16 +44,15 @@ export default function RangeSlider() {
     window.localStorage.setItem('valueOne',0)
     window.localStorage.setItem('valueTwo',100)
     window.localStorage.setItem('update','commit')
+
   })
   const show=(event)=>{
     console.log(localStorage.getItem('video_duration'))
   }
   const changeHandler=(event)=>{
-    setlink(event.target.value)
-    setVideoID(getYouTubeID(event.target.value))
-    setTimeout(() => {
-      console.log(videoID)
-    }, 2000);
+    var videoID=getYouTubeID(event.target.value)
+    window.localStorage.setItem('getVideoID',`${videoID}`)
+    window.location.href='/'
   }
   return (
     <div >
@@ -64,20 +63,19 @@ export default function RangeSlider() {
           <div id="video-placeholder"></div>
 
             <div className="">
-              {console.log(videoID)}
               <div class="row">
                 <div class="col-md-12 offset-md-0">
                   <div class="card">
-                      {/* <div class="card-content">
-                        <div className="col-md-10 offset-md-1 d-flex">
-                          <input onChange={changeHandler} className="form-control  mb-5" type="text" placeholder="Enter a link " />
+                      <div class="card-content">
+                        <div className="col-md-12  d-flex">
+                          <input onChange={changeHandler} className="form-control  mb-5" type="text" placeholder="Enter a youtube video link " />
                         </div>
-                        <div style={{textAlign: 'center'}}>
+                        {/* <div style={{textAlign: 'center'}}>
                           <div style={{display:'inline-block'}}>
                             <iframe title="YouTube Video" id="video_content" width="560" height="315" src={`${link}?&start=${value[0]}&end=${value[1]}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                           </div>
-                        </div>
-                      </div> */}
+                        </div> */}
+                      </div>
                       <div class="card-action">
                         <Typography id="range-slider" gutterBottom>Select Range </Typography>
                         <Slider
