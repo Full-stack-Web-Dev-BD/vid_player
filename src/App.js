@@ -81,13 +81,11 @@ export default function RangeSlider() {
   }
   return (
     <div >
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <div className="col-md-8 offset-md-2">
-              <img style={{maxWidth:'101px'}} src={require('./image/logo.png')}/>
-            </div>
-          </IconButton>
+      <AppBar position="static" style={{width:'100%'}}>
+        <Toolbar style={{width:'100%'}}>
+          <div className="col-md-8 offset-md-2 text-center">
+            <img style={{maxWidth:'101px'}} src={require('./image/logo.png')}/>
+          </div>
         </Toolbar>
       </AppBar>
       <div >
