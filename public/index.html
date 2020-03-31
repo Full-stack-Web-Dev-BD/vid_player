@@ -16,30 +16,123 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-   
-<link rel="stylesheet" href="css/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
 
 
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+<link rel="stylesheet" href=" https://unpkg.com/@material-ui/core@latest/umd/material-ui.production.min.js">
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+
     <title>React App</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <!-- <nav>
+      <div class="nav-wrapper">
+        <div class="container">
+          <ul id="nav-mobile" class="text-center hide-on-med-and-down">
+            <li><a href="" class="text-center">Video Play</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav> -->
+    <div class="col-md-8 offset-md-2 ">
+      <div class="text-center card p-5">
+        <div style="display: inline-block;">
+          <div  id="ytplayer"></div>
+        </div>
+      </div>
+    </div>
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+    // Load the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/player_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Replace the 'ytplayer' element with an <iframe> and
+    // YouTube player after the API code downloads.
+    var player;
+    function onYouTubePlayerAPIReady() {
+        player = new YT.Player('ytplayer', {
+        height: '360',
+        width: '640',
+        videoId: 'M7lc1UVf-VE',
+        seekTo:0,
+        autoplay: 1,
+        loop: 1,
+        });
+    }
+    var mode=true
+    function plaVideo(){
+        player.playVideo()
+    }
+    function start(){
+      var c=0
+      setInterval(() => {
+        player.playVideo()
+        c++
+        if(c>20){
+          clearInterval
+        }
+      }, 200);
+    }
+    var c=0
+      funky = setInterval(function() {
+        player.playVideo()
+        c++
+      }, 200);
+      setInterval(() => {
+
+        if(c>15){
+        clearInterval(funky);
+        }
+      }, 200);
+    $('#sk').click(function() {
+      seek()
+    });
+    
+    function seeter(){
+      var time =player.getDuration()
+      time =Math.round(time)
+      var minutes = Math.floor(time / 60)
+      var seconds = time - minutes * 60;
+      var avarageTime =(minutes*60)+seconds
+      window.localStorage.setItem('video_duration',avarageTime)
+    }
+    function seek(){
+        player.seekTo(0)
+    }
+    setInterval(() => {
+      seeter()
+    }, 200);
+    // seek
+    setInterval(() => {
+      
+      var valueOne=localStorage.getItem('valueOne')
+      var valueTwo=localStorage.getItem('valueTwo')
+
+      var valueOne=localStorage.getItem('valueOne')
+      var currentTime =player.getCurrentTime()
+
+      if(localStorage.getItem('update')=='commit'){
+        console.log('a new time renge pushed',valueOne, valueTwo)
+        player.seekTo(valueOne)
+        window.localStorage.setItem('update','pushed')
+      }
+      if(currentTime>valueTwo){
+        player.seekTo(valueOne)
+      }
+    }, 10);
+    </script>
   </body>
 </html>

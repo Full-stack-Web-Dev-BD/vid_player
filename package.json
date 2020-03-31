@@ -9,10 +9,14 @@
     "@testing-library/user-event": "^7.1.2",
     "@vimeo/player": "^2.10.0",
     "antd": "^4.0.2",
+    "get-youtube-id": "^1.0.1",
+    "node-video-duration": "^1.0.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
-    "react-youtube": "^7.9.0"
+    "react-youtube": "^7.9.0",
+    "youtube-info": "^1.3.2",
+    "youtube-video-info": "0.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
