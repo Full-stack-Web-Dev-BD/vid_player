@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.9.8",
+    "@material-ui/icons": "^4.9.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@vimeo/player": "^2.10.0",
     "antd": "^4.0.2",
+    "convert-seconds": "^1.0.1",
     "get-youtube-id": "^1.0.1",
     "node-video-duration": "^1.0.1",
     "react": "^16.13.0",

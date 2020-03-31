@@ -29,6 +29,20 @@
 <script src="https://www.youtube.com/iframe_api"></script>
 
     <title>React App</title>
+    <style>
+      .player{
+        position: absolute;
+        width: 100%;
+        margin-top: 110px;
+        z-index: 999;
+      } 
+      
+      @media only screen and (max-width: 720px) {
+        .iFrame iframe{
+          max-width: 70%;
+        }
+      }
+    </style>
   </head>
   <body>
 
@@ -41,10 +55,12 @@
         </div>
       </div>
     </nav>
-    <div class="col-md-8 offset-md-2 ">
-      <div class="text-center card p-5">
-        <div style="display: inline-block;">
-          <div  id="ytplayer"></div>
+    <div class="player">
+      <div class="col-md-8 offset-md-2 ">
+        <div class="text-center ">
+          <div style="display: inline-block;" class="iFrame">
+            <div  id="ytplayer"></div>
+          </div>
         </div>
       </div>
     </div>
