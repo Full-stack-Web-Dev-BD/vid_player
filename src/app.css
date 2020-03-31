@@ -1,3 +1,10 @@
 .PrivateValueLabel-label-65{
     display: none;
 }
+.nav-wrapper{
+    background-color: white;
+}
+
+.MuiAppBar-colorPrimary {
+    background-color: #f7f7f7 !important;
+}

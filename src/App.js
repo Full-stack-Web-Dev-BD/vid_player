@@ -5,11 +5,15 @@ import Slider from '@material-ui/core/Slider';
 import { useState } from 'react';
 import getYouTubeID from 'get-youtube-id'
 import './app.css'
-import convert  from'convert-seconds'
 import RestoreIcon from '@material-ui/icons/Restore';
 import LibraryAddCheckRoundedIcon from '@material-ui/icons/LibraryAddCheckRounded';
 
 
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 const useStyles = makeStyles({
   root: {
     width: 300,
@@ -77,6 +81,15 @@ export default function RangeSlider() {
   }
   return (
     <div >
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <div className="col-md-8 offset-md-2">
+              <img style={{maxWidth:'101px'}} src={require('./image/logo.png')}/>
+            </div>
+          </IconButton>
+        </Toolbar>
+      </AppBar>
       <div >
         <div>
           <div className="container">
@@ -129,160 +142,3 @@ export default function RangeSlider() {
     </div>
   );
 }
-
-
-
-      
-
-
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import { withStyles, makeStyles } from '@material-ui/core/styles';
-// import Slider from '@material-ui/core/Slider';
-// import Typography from '@material-ui/core/Typography';
-// import Tooltip from '@material-ui/core/Tooltip';
-// import { useState } from 'react';
-
-// const useStyles = makeStyles((theme) => ({
-//   root: {
-//     width: 300 + theme.spacing(3) * 3,
-//   },
-//   margin: {
-//     height: theme.spacing(3),
-//   },
-// }));
-// function ValueLabelComponent(props) {
-//   const { children, open, value } = props;
-
-//   return (
-//     <Tooltip open={open} enterTouchDelay={0} placement="top" title={value}>
-//       {children}
-//     </Tooltip>
-//   );
-// }
-// ValueLabelComponent.propTypes = {
-//   children: PropTypes.element.isRequired,
-//   open: PropTypes.bool.isRequired,
-//   value: PropTypes.number.isRequired,
-// };
-// const AirbnbSlider = withStyles({
-//   root: {
-//     color: '#3a8589',
-//     height: 3,
-//     padding: '13px 0',
-//   },
-//   thumb: {
-//     height: 27,
-//     width: 27,
-//     backgroundColor: '#fff',
-//     border: '1px solid currentColor',
-//     marginTop: -12,
-//     marginLeft: -13,
-//     boxShadow: '#ebebeb 0px 2px 2px',
-//     '&:focus, &:hover, &$active': {
-//       boxShadow: '#ccc 0px 2px 3px 1px',
-//     },
-//     '& .bar': {
-//       // display: inline-block !important;
-//       height: 9,
-//       width: 1,
-//       backgroundColor: 'currentColor',
-//       marginLeft: 1,
-//       marginRight: 1,
-//     },
-//   },
-//   active: {},
-//   valueLabel: {
-//     left: 'calc(-50% + 4px)',
-//   },
-//   track: {
-//     height: 3,
-//   },
-//   rail: {
-//     color: '#d8d8d8',
-//     opacity: 1,
-//     height: 3,
-//   },
-// })(Slider);
-// function AirbnbThumbComponent(props) {
-//   return (
-//     <span {...props}>
-//       <span className="bar" />
-//       <span className="bar" />
-//       <span className="bar" />
-//     </span>
-//   );
-// }
-
-// export default function App() {
-//   const classes = useStyles();
-//   const [link, setlink] = useState('https://www.youtube.com/embed/MqNd1xD46VY')
-//   const [startTime, setstartTime] = useState('10')
-//   const [endTime, setendTime] = useState('20')
-
-//   const changeHandler=(event)=>{
-//     setlink(event.target.value)
-//   }
-//   const changeValue=(event)=>{
-//     console.log(event)
-//   }
-// //   return (
-//     <div >
-//       <div>
-//       <nav>
-//         <div class="nav-wrapper">
-//           <div class="container">
-//             <ul id="nav-mobile" class="text-center hide-on-med-and-down">
-//               <li><a href="" class="text-center">Video Play</a></li>
-//             </ul>
-//           </div>
-//         </div>
-//       </nav>
-//         <div className="container">
-//           <div className=" mt-5">
-//             <div class="row">
-//               <div class="col-md-10 offset-md-1">
-//                 <div class="card">
-//                     <div class="card-content">
-//                       <div className="col-md-10 offset-md-1 d-flex">
-//                         <input onChange={changeHandler} className="form-control  mb-5" type="text" placeholder="Enter a link " />
-//                       </div>
-//                       <div style={{textAlign: 'center'}}>
-//                         <div style={{display:'inline-block'}}>
-//                           <iframe width="560" height="315" src={`${link}?&start=${startTime}&end=${endTime}`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-//                         </div>
-//                       </div>
-//                     </div>
-//                     <div class="card-action">
-//                       <Typography gutterBottom>Airbnb</Typography>
-//                       <AirbnbSlider
-//                         ThumbComponent={AirbnbThumbComponent}
-//                         getAriaLabel={(index) => (index === 0 ? 'Minimum price' : 'Maximum price')}
-//                         defaultValue={[20, 80]}
-//                         onChange={changeValue}
-//                       />
-//                     </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

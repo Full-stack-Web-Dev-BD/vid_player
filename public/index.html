@@ -33,7 +33,7 @@
       .player{
         position: absolute;
         width: 100%;
-        margin-top: 110px;
+        margin-top: 170px;
         z-index: 999;
       } 
       
@@ -46,15 +46,6 @@
   </head>
   <body>
 
-    <nav>
-      <div class="nav-wrapper">
-        <div class="container">
-          <ul id="nav-mobile" class="text-center hide-on-med-and-down">
-            <li><a href="" class="text-center">Video Play</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
     <div class="player">
       <div class="col-md-8 offset-md-2 ">
         <div class="text-center ">
@@ -123,6 +114,12 @@
       var seconds = time - minutes * 60;
       var avarageTime =(minutes*60)+seconds
       window.localStorage.setItem('video_duration',avarageTime)
+      
+      setInterval(() => {
+        if(player.getCurrentTime()>(avarageTime-1)){
+          player.playVideo()
+        }
+      }, 200);
     }
     function seek(){
         player.seekTo(0)
@@ -156,3 +153,5 @@
     </script>
   </body>
 </html>
+
+<!-- https://www.youtube.com/watch?v=IGQBtbKSVhY -->
