@@ -59,9 +59,10 @@ export default function RangeSlider() {
     
   };
   useState(()=>{
+    var video_duration = localStorage.getItem('video_duration')
     
     window.localStorage.setItem('valueOne',0)
-    window.localStorage.setItem('valueTwo',100)
+    window.localStorage.setItem('valueTwo',video_duration)
     window.localStorage.setItem('update','commit')
 
   })
@@ -81,15 +82,13 @@ export default function RangeSlider() {
   }
   return (
     <div >
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <div className="col-md-8 offset-md-2 text-center">
-              <img style={{maxWidth:'101px'}} src={require('./image/logo.png')}/>
-            </div>
-          </IconButton>
-        </Toolbar>
-      </AppBar>
+    <AppBar position="static" style={{width:'100%'}}>
+      <Toolbar style={{width:'100%'}}>
+        <div className="col-md-8 offset-md-2 text-center">
+          <img style={{maxWidth:'101px'}} src={require('./image/logo.png')}/>
+        </div>
+      </Toolbar>
+    </AppBar>
       <div >
         <div>
           <div className="container">
