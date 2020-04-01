@@ -114,7 +114,6 @@
       var seconds = time - minutes * 60;
       var avarageTime =(minutes*60)+seconds
       window.localStorage.setItem('video_duration',avarageTime)
-      
       setInterval(() => {
         if(player.getCurrentTime()>(avarageTime-1)){
           player.playVideo()
@@ -128,6 +127,38 @@
       seeter()
     }, 200);
     // seek
+    // set video duration 
+    // setInterval(() => {
+      
+    //   var time =player.getDuration()
+    //   time =Math.round(time)
+    //   var minutes = Math.floor(time / 60)
+    //   var seconds = time - minutes * 60;
+    //   var avarageTime =(minutes*60)+seconds
+    //   window.localStorage.setItem('video_duration',avarageTime)
+
+    // }, 100);
+
+    
+    var counter = 0;
+    var looper = setInterval(function(){ 
+        counter++;
+        console.log("Counter is: " + counter);
+        
+        var time =player.getDuration()
+        time =Math.round(time)
+        var minutes = Math.floor(time / 60)
+        var seconds = time - minutes * 60;
+        var avarageTime =(minutes*60)+seconds
+        var valueTwo=localStorage.setItem('valueTwo' , avarageTime)
+
+
+        if (counter >= 5)
+        {
+            clearInterval(looper);
+        }
+
+    }, 100);
     setInterval(() => {
       
       var valueOne=localStorage.getItem('valueOne')

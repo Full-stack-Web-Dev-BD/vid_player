@@ -27,12 +27,18 @@ function valuetext(value) {
 export default function RangeSlider() {
   const classes = useStyles();
   const [value, setValue] = React.useState([0, 100]);
-  const [avarageTime, setavarageTime] = useState('')
+  const [avarageTime, setavarageTime] = useState('00:00')
   const [selected, setselected] = useState('00:00')
 
-
-
   const handleChange = (event, newValue) => {
+    
+    setTimeout(() => {
+      var video_duration = localStorage.getItem('video_duration')
+      var minute=Math.floor(video_duration / 60);
+      var seconds=video_duration-(minute*60)
+
+      setavarageTime(`${minute} : ${seconds}`)
+    }, 200);
     var video_duration = localStorage.getItem('video_duration')
     var onePersentInSeconds=video_duration/100
     var valueOne=newValue[0]*onePersentInSeconds
@@ -44,9 +50,6 @@ export default function RangeSlider() {
     setValue(newValue);
     setselected(`${selectedMinute}:${selectedSeconds}`)
 
-
-    
-    
     // here just need to set    selected time  ,  avarage time 
     window.localStorage.setItem('valueOne',valueOne)
     window.localStorage.setItem('valueTwo',valueTwo)
@@ -67,18 +70,16 @@ export default function RangeSlider() {
 
   })
   useEffect(()=>{
-    setTimeout(() => {
-      var video_duration = localStorage.getItem('video_duration')
-      var minute=Math.floor(video_duration / 60);
-      var seconds=video_duration-(minute*60)
-
-      setavarageTime(`${minute} : ${seconds}`)
-    }, 200);
   })
   const changeHandler=(event)=>{
     var videoID=getYouTubeID(event.target.value)
     window.localStorage.setItem('getVideoID',`${videoID}`)
     window.location.href='/'
+    
+    setTimeout(() => {
+      window.location.href='/'
+      console.log('reloaded page')
+    }, 2500);
   }
   return (
     <div >
